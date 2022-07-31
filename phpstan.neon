@@ -1,0 +1,5 @@
+parameters:
+    excludes_analyse:
+        - tests/*
+    ignoreErrors:
+#soon maybe something here will be
