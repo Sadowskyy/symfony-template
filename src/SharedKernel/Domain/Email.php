@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SharedKernel;
+namespace SharedKernel\Domain;
 
 use Domain\Exception\InvalidEmailException;
 use JsonSerializable;
