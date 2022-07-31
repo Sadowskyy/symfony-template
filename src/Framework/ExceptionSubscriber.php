@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Framework;
 
-use SharedKernel\PasswordHash;
+use Framework\Response\ErrorResponse;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,6 +31,7 @@ final class ExceptionSubscriber
 
     private function createApiResponse(Throwable $throwable): Response
     {
+        //Framework exceptions
         if ($throwable instanceof NotFoundHttpException) {
             return new JsonResponse(
                 [

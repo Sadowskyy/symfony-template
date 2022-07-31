@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace SharedKernel;
 
+use Domain\Exception\InvalidEmailException;
 use JsonSerializable;
 
 final class Email implements JsonSerializable
