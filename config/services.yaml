@@ -3,6 +3,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Framework\ExceptionSubscriber:
+    Framework\ExceptionSubscriber:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
