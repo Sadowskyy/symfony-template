@@ -14,3 +14,4 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}
       - run: composer install --no-interaction --no-ansi --optimize-autoloader --no-progress --prefer-dist
       - run: sudo systemctl start mysql.service
+      - run: bin/phpunit
