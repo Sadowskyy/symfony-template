@@ -30,7 +30,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Framework\\": "src/Framework",
+            "SharedKernel\\": "src/SharedKernel"
         }
     },
     "autoload-dev": {

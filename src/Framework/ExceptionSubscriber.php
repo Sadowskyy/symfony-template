@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Framework;
+namespace Framework;
 
+use SharedKernel\PasswordHash;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
