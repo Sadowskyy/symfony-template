@@ -8,6 +8,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use function array_diff;
+use function scandir;
 
 final class TestDbInitCommand extends Command
 {
@@ -19,8 +21,9 @@ final class TestDbInitCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $projectDir = $this->container->getParameter('kernel.project_dir');
-        $initializeDbFiles = array_diff(scandir("$projectDir/dev/mysql"), array('.', '..'));
+        /** @phpstan-ignore-next-line */
+        $projectDir = (string) $this->container->getParameter('kernel.project_dir');
+        $initializeDbFiles = array_diff((array) scandir("$projectDir/dev/mysql"), array('.', '..'));
 //
 //        foreach ($initializeDbFiles as $file) {
 //            if (pathinfo(($file))['extension'] === 'sql') {
