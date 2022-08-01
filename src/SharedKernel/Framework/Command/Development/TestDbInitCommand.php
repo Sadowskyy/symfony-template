@@ -19,8 +19,8 @@ final class TestDbInitCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-//        $projectDir = $this->container->getParameter('kernel.project_dir');
-//        $initializeDbFiles = array_diff(scandir("$projectDir/dev/mysql"), array('.', '..'));
+        $projectDir = $this->container->getParameter('kernel.project_dir');
+        $initializeDbFiles = array_diff(scandir("$projectDir/dev/mysql"), array('.', '..'));
 //
 //        foreach ($initializeDbFiles as $file) {
 //            if (pathinfo(($file))['extension'] === 'sql') {
