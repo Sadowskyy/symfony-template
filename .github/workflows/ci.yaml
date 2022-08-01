@@ -14,7 +14,7 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}
       - run: composer install --no-interaction --no-ansi --optimize-autoloader --no-progress --prefer-dist
       - run: sudo systemctl start mysql.service
-      - run: bin/console --env=test dev:test-db:init
+#      - run: bin/console --env=test dev:test-db:init
       - run: bin/phpunit -d memory_limit=512M --coverage-clover=build/coverage.xml
       - uses: codecov/codecov-action@v2
         with:
