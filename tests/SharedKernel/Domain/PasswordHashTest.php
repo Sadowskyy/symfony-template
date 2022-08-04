@@ -13,6 +13,7 @@ class PasswordHashTest extends TestCase
     {
         $passwordHash = new PasswordHash('123iy12i32');
         self::assertEquals('123iy12i32', $passwordHash->jsonSerialize());
+        self::assertEquals('123iy12i32', (string) $passwordHash);
     }
 
     public function testFailure(): void
