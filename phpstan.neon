@@ -1,7 +1,6 @@
 parameters:
-    excludes_analyse:
+    excludePaths:
         - tests/*
+        - SharedKernel\Framework\Command\Development\TestDbInitCommand
     ignoreErrors:
 #soon maybe something here will be
-    excludePaths:
-        - SharedKernel\Framework\Command\Development\TestDbInitCommand
