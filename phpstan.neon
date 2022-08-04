@@ -3,3 +3,5 @@ parameters:
         - tests/*
     ignoreErrors:
 #soon maybe something here will be
+    excludePaths:
+        - SharedKernel\Framework\Command\Development\TestDbInitCommand
