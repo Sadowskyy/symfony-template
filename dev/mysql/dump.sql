@@ -1,1 +1,0 @@
--- You can paste here some schemas etc. also you can do it in another file with .sql extension
