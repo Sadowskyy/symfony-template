@@ -3,10 +3,12 @@ services:
         autowire: true
         autoconfigure: true
 
-    Framework\ExceptionSubscriber:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
+#    Framework\ExceptionSubscriber:
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.exception }
 
     SharedKernel\Framework\Command\Development\TestDbInitCommand:
         arguments:
             $container: '@service_container'
+    Framework\Controller\Security\LoginController:
+        tags: [ 'controller.service_arguments' ]
