@@ -17,6 +17,16 @@ final class UserData
     ) {
     }
 
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function getUserUuid(): Uuid
+    {
+        return $this->userUuid;
+    }
+
     public function getEmail(): Email
     {
         return $this->email;
