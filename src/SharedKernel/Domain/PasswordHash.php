@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SharedKernel\Domain;
@@ -18,12 +19,12 @@ final class PasswordHash
         $this->passwordHash = $value;
     }
 
-    public function jsonSerialize(): string
+    public function __toString(): string
     {
         return $this->passwordHash;
     }
 
-    public function __toString(): string
+    public function jsonSerialize(): string
     {
         return $this->passwordHash;
     }

@@ -1,0 +1,2 @@
+[![codecov](https://codecov.io/gh/Sadowskyy/symfony-template/branch/master/graph/badge.svg?token=6S1V1Q10IX)](https://codecov.io/gh/Sadowskyy/symfony-template)
+[![CI](https://github.com/Sadowskyy/symfony-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Sadowskyy/symfony-template/actions/workflows/ci.yml)
