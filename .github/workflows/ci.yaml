@@ -59,3 +59,4 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}
       - run: composer install --no-interaction --no-ansi --optimize-autoloader --no-progress --prefer-dist
       - run: vendor/bin/phpstan analyse src --level 9
+      - run: vendor/bin/ecs check src
