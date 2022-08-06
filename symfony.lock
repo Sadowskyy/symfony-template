@@ -140,6 +140,7 @@
         "files": [
             "config/packages/security.yaml"
         ]
+
     },
     "symfony/twig-bundle": {
         "version": "6.1",
