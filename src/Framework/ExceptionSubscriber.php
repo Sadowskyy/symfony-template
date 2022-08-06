@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Framework;
@@ -44,9 +45,14 @@ final class ExceptionSubscriber
             );
         }
 
-        $this->logger->error($throwable->getMessage(), ['exception' => $throwable]);
+        $this->logger->error($throwable->getMessage(), [
+            'exception' => $throwable,
+        ]);
 
-        return new ErrorResponse("Unexpected error occurred! Error message: + {$throwable->getMessage()}", Response::HTTP_INTERNAL_SERVER_ERROR);
+        return new ErrorResponse(
+            "Unexpected error occurred! Error message: + {$throwable->getMessage()}",
+            Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     private function hasAcceptableContentType(Request $request): bool

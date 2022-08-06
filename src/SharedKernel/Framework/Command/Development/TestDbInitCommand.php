@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SharedKernel\Framework\Command\Development;
@@ -13,8 +14,10 @@ use function scandir;
 
 final class TestDbInitCommand extends Command
 {
-    public function __construct(private ContainerInterface $container, private Connection $connection)
-    {
+    public function __construct(
+        private ContainerInterface $container,
+        private Connection $connection
+    ) {
         parent::__construct('dev:db:init');
     }
 
@@ -22,13 +25,11 @@ final class TestDbInitCommand extends Command
     {
         /** @phpstan-ignore-next-line */
         $projectDir = (string) $this->container->getParameter('kernel.project_dir');
-        $initializeDbFiles = array_diff((array) scandir("$projectDir/dev/mysql"), array('.', '..'));
+        $initializeDbFiles = array_diff((array) scandir("{$projectDir}/dev/mysql"), ['.', '..']);
 
         foreach ($initializeDbFiles as $file) {
             if (pathinfo(($file))['extension'] === 'sql') {
-                $this->connection->executeQuery(
-                    (string) file_get_contents("$projectDir/dev/mysql/$file")
-                );
+                $this->connection->executeQuery((string) file_get_contents("{$projectDir}/dev/mysql/{$file}"));
             }
         }
 
