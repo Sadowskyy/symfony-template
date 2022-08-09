@@ -12,3 +12,6 @@ services:
             $container: '@service_container'
     Framework\Controller\Security\LoginController:
         tags: [ 'controller.service_arguments' ]
+
+    Framework\Controller\Health\HealthzController:
+        tags: [ 'controller.service_arguments' ]
