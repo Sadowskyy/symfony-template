@@ -19,12 +19,12 @@ use Symfony\Component\Uid\Uuid;
 
 final class UserByEmailProvider implements UserProviderInterface
 {
-
     public function __construct(private Connection $connection) {
     }
 
-    public function refreshUser(UserInterface $user)
+    public function refreshUser(UserInterface $user): UserInterface
     {
+        return $this->loadUserByIdentifier($user->getUserIdentifier());
     }
 
     public function supportsClass(string $class): bool
@@ -47,5 +47,6 @@ final class UserByEmailProvider implements UserProviderInterface
             new PasswordHash($user['password']),
         );
 
-        return new SharedUser($userData);    }
+        return new SharedUser($userData);
+    }
 }
