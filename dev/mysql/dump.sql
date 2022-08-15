@@ -1,12 +1,9 @@
 -- You can paste here some schemas etc. also you can do it in another file with .sql extension
--- You can paste here some schemas etc. also you can do it in another file with .sql extension
 DROP DATABASE IF EXISTS application;
 
 CREATE DATABASE IF NOT EXISTS application;
 
-SET GLOBAL sql_mode="NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
-
-USE application
+USE application;
 
 DROP TABLE IF EXISTS `users`;
 
