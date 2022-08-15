@@ -10,8 +10,15 @@ services:
     SharedKernel\Framework\Command\Development\TestDbInitCommand:
         arguments:
             $container: '@service_container'
+    SharedKernel\Framework\Security\Provider\UserByEmailProvider: ~
+
     Framework\Controller\Security\LoginController:
         tags: [ 'controller.service_arguments' ]
 
+
     Framework\Controller\Health\HealthzController:
         tags: [ 'controller.service_arguments' ]
+
+    Symfony\Component\Security\Http\Authentication\AuthenticationUtils:
+        class: Symfony\Component\Security\Http\Authentication\AuthenticationUtils
+
