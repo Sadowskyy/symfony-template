@@ -50,7 +50,8 @@
             "Application\\": "src/Application",
             "Domain\\": "src/Domain",
             "Framework\\": "src/Framework",
-            "SharedKernel\\": "src/SharedKernel"
+            "SharedKernel\\": "src/SharedKernel",
+            "OpenAPI\\": "src/OpenAPI"
         }
     },
     "autoload-dev": {
