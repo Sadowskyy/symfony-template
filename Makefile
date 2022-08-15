@@ -11,3 +11,5 @@ ci:
 test:
 	bin/console --env=test dev:test-db:init
 	bin/phpunit
+fix:
+	vendor/bin/ecs check src --fix
