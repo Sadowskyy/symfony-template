@@ -69,7 +69,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
+      - /dev/mysql:/docker-entrypoint-initdb.d:delegated
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
     networks:
