@@ -1,5 +1,4 @@
-version: "3.4"
-
+version: "3.8"
 services:
   php:
     build:
@@ -22,6 +21,8 @@ services:
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://caddy/.well-known/mercure}
       MERCURE_PUBLIC_URL: https://${SERVER_NAME:-localhost}/.well-known/mercure
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeMe!}
+    networks:
+      - app
 
   caddy:
     build:
@@ -51,8 +52,9 @@ services:
       - target: 443
         published: ${HTTP3_PORT:-443}
         protocol: udp
-
-# Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
+    networks:
+      - app
+  # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
 
@@ -70,6 +72,8 @@ services:
       - db-data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
+    networks:
+      - app
 ###< doctrine/doctrine-bundle ###
 
 volumes:
@@ -82,3 +86,11 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   db-data:
 ###< doctrine/doctrine-bundle ###
+### network ###
+networks:
+  app:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.199.1/24
