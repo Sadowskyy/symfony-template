@@ -15,5 +15,10 @@ services:
     Framework\Controller\Security\LoginController:
         tags: [ 'controller.service_arguments' ]
 
+
+    Framework\Controller\Health\HealthzController:
+        tags: [ 'controller.service_arguments' ]
+
     Symfony\Component\Security\Http\Authentication\AuthenticationUtils:
         class: Symfony\Component\Security\Http\Authentication\AuthenticationUtils
+

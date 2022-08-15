@@ -37,8 +37,9 @@ jobs:
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
       - run: composer install --no-interaction --no-ansi --optimize-autoloader --no-progress --prefer-dist
+      - run: cat dev/mysql/*.sql > dev/mysql_dump.sql
       - run: sudo systemctl start mysql.service
-#      - run: bin/console --env=test dev:test-db:init
+      - run: mysql -uroot -proot  < dev/mysql_dump.sql
       - run: bin/phpunit -d memory_limit=512M --coverage-clover=build/coverage.xml
       - uses: codecov/codecov-action@v2
         with:
