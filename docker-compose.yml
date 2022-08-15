@@ -75,7 +75,16 @@ services:
     networks:
       - app
 ###< doctrine/doctrine-bundle ###
-
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - app
 volumes:
   php_socket:
   caddy_data:
