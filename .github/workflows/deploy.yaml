@@ -27,18 +27,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./build/coverage.xml
           verbose: true
-  codestyle:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-      - name: Restore composer cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
-      - run: composer install --no-interaction --no-ansi --optimize-autoloader --no-progress --prefer-dist
-      - run: vendor/bin/phpstan analyse src --level 8
-      - run: vendor/bin/ecs check src
