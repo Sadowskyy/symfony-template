@@ -24,6 +24,6 @@ CREATE TABLE `users`
 LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `uuid`, `email`, `password`, `language`, `created_at`, `updated_at`)
-VALUES (1, '07153a4a-f96b-11e9-afd5-0242ac12000b', 'admin@symfony.dev', '$2a$12$hxhbf/Csroe8xJl8NwM7h.HixorWDw/LYVLHmN8Ga505oiaCNvlkC', 'en', '2000-10-28 10:10:10', '2020-10-28 11:11:08');
+VALUES (1, '07153a4a-f96b-11e9-afd5-0242ac12000b', 'admin@symfony.dev', '$2a$12$8E4kJMqXFD2MpSfEPhnyBu19TdXmAIPsVXZ1/sIHeFoQZyqV5/S4O', 'en', '2000-10-28 10:10:10', '2020-10-28 11:11:08');
 
 UNLOCK TABLES;
