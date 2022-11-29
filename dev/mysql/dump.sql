@@ -27,3 +27,16 @@ INSERT INTO `users` (`id`, `uuid`, `email`, `password`, `language`, `created_at`
 VALUES (1, '07153a4a-f96b-11e9-afd5-0242ac12000b', 'admin@symfony.dev', '$2a$12$8E4kJMqXFD2MpSfEPhnyBu19TdXmAIPsVXZ1/sIHeFoQZyqV5/S4O', 'en', '2000-10-28 10:10:10', '2020-10-28 11:11:08');
 
 UNLOCK TABLES;
+
+CREATE TABLE `roles`
+(
+    `id`         int(10) NOT NULL AUTO_INCREMENT,
+    `user_id`    int(10) NOT NULL,
+    `role`       varchar(64) CHARACTER SET utf8 NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `roles` WRITE;
+# Here we can paste some roles data.
+UNLOCK TABLES;
