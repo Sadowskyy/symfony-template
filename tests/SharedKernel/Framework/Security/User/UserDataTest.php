@@ -6,6 +6,7 @@ namespace Tests\SharedKernel\Framework\Security\User;
 use PHPUnit\Framework\TestCase;
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\PasswordHash;
+use SharedKernel\Domain\Language;
 use SharedKernel\Framework\Security\User\UserData;
 use Symfony\Component\Uid\Uuid;
 
@@ -18,11 +19,13 @@ class UserDataTest extends TestCase
             $uuid = Uuid::v4(),
             $email =  new Email('email@gmail.com'),
             $passwordHash = new PasswordHash('123'),
+            $language = new Language('en'),
         );
 
         self::assertEquals($userId, $userData->getUserId());
         self::assertEquals($uuid, $userData->getUserUuid());
         self::assertEquals($email, $userData->getEmail());
         self::assertEquals($passwordHash, $userData->getPasswordHash());
+        self::assertEquals($language, $userData->getLanguage());
     }
 }

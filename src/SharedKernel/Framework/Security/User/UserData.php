@@ -6,6 +6,7 @@ namespace SharedKernel\Framework\Security\User;
 
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\PasswordHash;
+use SharedKernel\Domain\Language;
 use Symfony\Component\Uid\Uuid;
 
 final class UserData
@@ -14,7 +15,8 @@ final class UserData
         private int $userId,
         private Uuid $userUuid,
         private Email $email,
-        private PasswordHash $passwordHash
+        private PasswordHash $passwordHash,
+        private Language $language,
     ) {
     }
 
@@ -36,5 +38,10 @@ final class UserData
     public function getPasswordHash(): PasswordHash
     {
         return $this->passwordHash;
+    }
+
+    public function getLanguage(): Language
+    {
+        return $this->language;
     }
 }
