@@ -15,6 +15,7 @@ class AuthControllerTest extends AbstractFunctionalTestCase
     public function __construct(Connection $connection)
     {
         parent::__construct(null, [], '$dataName');
+        $this->connection = $connection;
     }
 
     public function testMainPageEndpoint(): void
