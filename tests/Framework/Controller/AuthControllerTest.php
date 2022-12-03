@@ -10,18 +10,13 @@ use Tests\Utils\AbstractFunctionalTestCase;
 
 class AuthControllerTest extends AbstractFunctionalTestCase
 {
-    private Connection $connection;
-    
-    public function __construct(Connection $connection)
-    {
-        parent::__construct(null, [], '$dataName');
-        $this->connection = $connection;
-    }
-
     public function testMainPageEndpoint(): void
     {
+        /**@var Connection $connection */
+        $connection = static::getContainer()->get(Connection::class);
         $client = $this->getClient();
-        $user = $this->connection->exec((string) new GetUserByEmailQuery());
+
+        $user = $connection->exec("SELECT * FROM users WHERE email = 'admin@symfony.dev'");
         dd($user);
     }
 }
