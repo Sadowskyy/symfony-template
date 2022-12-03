@@ -50,8 +50,10 @@
     },
     "autoload": {
         "psr-4": {
+            "Acl\\": "src/Acl",
             "Application\\": "src/Application",
             "Domain\\": "src/Domain",
+            "Infrastructure\\": "src/Infrastructure",
             "Framework\\": "src/Framework",
             "SharedKernel\\": "src/SharedKernel"
         }
