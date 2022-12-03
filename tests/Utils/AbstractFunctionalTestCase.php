@@ -5,6 +5,7 @@ namespace Tests\Utils;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractFunctionalTestCase extends WebTestCase
 {
@@ -32,5 +33,10 @@ abstract class AbstractFunctionalTestCase extends WebTestCase
         $server[] = ['HTTP_ACCEPT' => 'application/json'];
 
         $client->request($method, $uri, $parameters, $files, $server, $content);
+    }
+
+    public static function getCrawler(KernelBrowser $client, string $path): Crawler
+    {
+        return $client->request('GET', $path);
     }
 }
