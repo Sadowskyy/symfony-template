@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\SharedKernel\Framework\Security\User;
 
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\PasswordHash;
@@ -20,6 +21,8 @@ class UserDataTest extends TestCase
             $email =  new Email('email@gmail.com'),
             $passwordHash = new PasswordHash('123'),
             $language = new Language('en'),
+            $createdAt = new DateTimeImmutable(),
+            $updatedAt = new DateTimeImmutable()
         );
 
         self::assertEquals($userId, $userData->getUserId());
@@ -27,5 +30,7 @@ class UserDataTest extends TestCase
         self::assertEquals($email, $userData->getEmail());
         self::assertEquals($passwordHash, $userData->getPasswordHash());
         self::assertEquals($language, $userData->getLanguage());
+        self::assertEquals($createdAt, $userData->getCreatedAt());
+        self::assertEquals($updatedAt, $userData->getUpdatedAt());
     }
 }

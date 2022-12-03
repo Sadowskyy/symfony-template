@@ -3,34 +3,28 @@ declare(strict_types=1);
 
 namespace Tests\SharedKernel\Framework\Security\User;
 
-use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use SharedKernel\Domain\Email;
-use SharedKernel\Domain\PasswordHash;
 use SharedKernel\Domain\Language;
+use SharedKernel\Domain\PasswordHash;
+use SharedKernel\Framework\Security\User\SharedUser;
 use SharedKernel\Framework\Security\User\UserData;
 use Symfony\Component\Uid\Uuid;
 
-class UserDataTest extends TestCase
+class SharedUserTest extends TestCase
 {
-    public function testCreationUserData(): void
+    public function testCreatingSharedUser(): void
     {
         $userData = new UserData(
-            $userId = 1,
-            $uuid = Uuid::v4(),
-            $email =  new Email('email@gmail.com'),
-            $passwordHash = new PasswordHash('123'),
-            $language = new Language('en'),
-            $createdAt = new DateTimeImmutable(),
-            $updatedAt = new DateTimeImmutable()
+            1,  
+            Uuid::v4(),
+            new Email('email@gmail.com'),
+            new PasswordHash('123'),
+            new Language('en')
         );
-
-        self::assertEquals($userId, $userData->getUserId());
-        self::assertEquals($uuid, $userData->getUserUuid());
-        self::assertEquals($email, $userData->getEmail());
-        self::assertEquals($passwordHash, $userData->getPasswordHash());
-        self::assertEquals($language, $userData->getLanguage());
-        self::assertEquals($createdAt, $userData->getCreatedAt());
-        self::assertEquals($updatedAt, $userData->getUpdatedAt());
+        $user = new SharedUser($userData);
+        self::assertEquals('123', $user->getPassword());
+        self::assertEquals('email@gmail.com', $user->getUserIdentifier());
+        self::assertEquals([], $user->getRoles());
     }
 }
