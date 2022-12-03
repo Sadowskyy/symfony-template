@@ -19,3 +19,4 @@ A [Docker](https://www.docker.com)-based project and runtime for the [Symfony](h
 2. [Database dump](docs/dump.md)
 3. [Database connection](docs/databse.md)
 4. [Test authentication](docs/users.md)
+5. [Test registration](docs/registration.md)
