@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Framework\Controller\User;
 
-use Framework\Form\User\SignUpForm;
+use Framework\Form\SignUpForm;
 use Framework\Response\Redirect;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
