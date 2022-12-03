@@ -27,3 +27,4 @@ services:
     Symfony\Component\Security\Http\Authentication\AuthenticationUtils:
         class: Symfony\Component\Security\Http\Authentication\AuthenticationUtils
 
+    Application\Service\SignUpService: ~
