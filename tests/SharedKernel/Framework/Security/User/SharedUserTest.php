@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\SharedKernel\Framework\Security\User;
 
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\Language;
@@ -20,7 +21,9 @@ class SharedUserTest extends TestCase
             Uuid::v4(),
             new Email('email@gmail.com'),
             new PasswordHash('123'),
-            new Language('en')
+            new Language('en'),
+            new DateTimeImmutable(),
+            new DateTimeImmutable() 
         );
         $user = new SharedUser($userData);
         self::assertEquals('123', $user->getPassword());
