@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\SharedKernel\Domain;
 
-use Domain\Exception\InvalidEmailException;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use SharedKernel\Domain\Language;
 
@@ -17,7 +17,7 @@ class LanguageTest extends TestCase
 
     public function testShouldFail(): void
     {
-        $this->expectException(InvalidEmailException::class);
+        $this->expectException(InvalidArgumentException::class);
         $language = new Language('cz');
     }
 }
