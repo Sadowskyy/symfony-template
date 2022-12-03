@@ -28,3 +28,6 @@ services:
         class: Symfony\Component\Security\Http\Authentication\AuthenticationUtils
 
     Application\Service\SignUpService: ~
+
+    Domain\WriteModel\UserRepository:
+        class: Infrastructure\Persistence\Doctrine\Orm\DoctrineUserRepository

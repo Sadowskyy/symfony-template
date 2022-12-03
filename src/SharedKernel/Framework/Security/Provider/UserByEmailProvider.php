@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace SharedKernel\Framework\Security\Provider;
 
+use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
 use Domain\Exception\UserCannotBeFound;
 use SharedKernel\Application\Query\User\GetUserByEmailQuery;
 use SharedKernel\Domain\Email;
+use SharedKernel\Domain\Language;
 use SharedKernel\Domain\PasswordHash;
 use SharedKernel\Framework\Security\User\SharedUser;
 use SharedKernel\Framework\Security\User\UserData;
@@ -44,6 +46,9 @@ final class UserByEmailProvider implements UserProviderInterface
             Uuid::fromString($user['uuid']),
             new Email($user['email']),
             new PasswordHash($user['password']),
+            new Language($user['language']),
+            new DateTimeImmutable($user['created_at']),
+            new DateTimeImmutable($user['updated_at']),
         );
 
         return new SharedUser($userData);

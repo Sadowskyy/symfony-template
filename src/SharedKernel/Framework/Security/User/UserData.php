@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SharedKernel\Framework\Security\User;
 
+use DateTimeImmutable;
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\PasswordHash;
 use SharedKernel\Domain\Language;
@@ -12,15 +13,17 @@ use Symfony\Component\Uid\Uuid;
 final class UserData
 {
     public function __construct(
-        private int $userId,
+        private ?int $userId,
         private Uuid $userUuid,
         private Email $email,
         private PasswordHash $passwordHash,
         private Language $language,
+        private DateTimeImmutable $createdAt,
+        private DateTimeImmutable $updatedAt
     ) {
     }
 
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
@@ -43,5 +46,15 @@ final class UserData
     public function getLanguage(): Language
     {
         return $this->language;
+    }
+
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
     }
 }

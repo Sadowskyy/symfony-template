@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace SharedKernel\Framework\Security\User;
 
+use SharedKernel\Domain\Email;
+use SharedKernel\Domain\Language;
+use SharedKernel\Domain\PasswordHash;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -18,6 +21,16 @@ class SharedUser implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->userData->getPasswordHash();
     }
 
+    public function getEmail(): Email
+    {
+        return $this->userData->getEmail();
+    }
+
+    public function getLanguage(): Language
+    {
+        return $this->userData->getLanguage();
+    }
+
     public function getRoles(): array
     {
         return [];
@@ -30,5 +43,17 @@ class SharedUser implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->userData->getEmail();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'uuid' => $this->userData->getUserUuid()->jsonSerialize(),
+            'email' => (string) $this->getEmail(),
+            'password' => $this->getPassword(),
+            'language' => (string) $this->getLanguage(),
+            'created_at' => $this->userData->getCreatedAt()->format('Y-m-d H:i:s'),
+            'updated_at' => $this->userData->getUpdatedAt()->format('Y-m-d H:i:s'),
+        ];
     }
 }

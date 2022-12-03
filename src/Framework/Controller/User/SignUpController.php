@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Framework\Controller\User;
 
-use Application\Command\SignUpRequest;
 use Application\Service\SignUpService;
+use Application\UseCase\SignUpRequest;
 use Framework\Form\SignUpForm;
 use Framework\Response\Redirect;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
