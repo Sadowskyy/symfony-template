@@ -12,7 +12,7 @@ class LanguageTest extends TestCase
     public function testConstruction(): void
     {
         $language = new Language('en');
-        self::assertEquals('en, (string) $language);
+        self::assertEquals('en', (string) $language);
     }
 
     public function testShouldFail(): void
