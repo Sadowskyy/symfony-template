@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace SharedKernel\Framework\Security\User;
 
+use JsonSerializable;
 use SharedKernel\Domain\Email;
 use SharedKernel\Domain\Language;
-use SharedKernel\Domain\PasswordHash;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class SharedUser implements UserInterface, PasswordAuthenticatedUserInterface
+class SharedUser implements UserInterface, PasswordAuthenticatedUserInterface, JsonSerializable
 {
     public function __construct(private UserData $userData)
     {
@@ -55,5 +55,10 @@ class SharedUser implements UserInterface, PasswordAuthenticatedUserInterface
             'created_at' => $this->userData->getCreatedAt()->format('Y-m-d H:i:s'),
             'updated_at' => $this->userData->getUpdatedAt()->format('Y-m-d H:i:s'),
         ];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
     }
 }

@@ -23,7 +23,10 @@ services:
 
     Framework\Controller\User\SignUpController:
         tags: [ 'controller.service_arguments' ]
-        
+
+    Framework\Controller\Security\AuthController:
+        tags: [ 'controller.service_arguments' ]
+
     Symfony\Component\Security\Http\Authentication\AuthenticationUtils:
         class: Symfony\Component\Security\Http\Authentication\AuthenticationUtils
 
