@@ -40,6 +40,7 @@ jobs:
       - run: cat dev/mysql/*.sql > dev/mysql_dump.sql
       - run: sudo systemctl start mysql.service
       - run: mysql -uroot -proot  < dev/mysql_dump.sql
+      - run: mysql -uroot -proot SHOW DATABASES
       - run: bin/console dev:db:init
       - run: bin/phpunit -d memory_limit=512M --coverage-clover=build/coverage.xml
       - uses: codecov/codecov-action@v2
