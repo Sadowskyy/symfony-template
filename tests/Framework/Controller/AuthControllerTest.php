@@ -15,7 +15,7 @@ class AuthControllerTest extends AbstractFunctionalTestCase
         /**@var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        $user = $connection->exec("SELECT * FROM users WHERE email = 'admin@symfony.dev'");
+        $user = $connection->exec("SELECT * FROM users");
         dd($user);
     }
 }

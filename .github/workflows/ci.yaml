@@ -3,6 +3,8 @@ jobs:
   build:
     name: Docker build
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://root:root@localhost:3306/application
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,6 +42,7 @@ jobs:
       - run: cat dev/mysql/*.sql > dev/mysql_dump.sql
       - run: sudo systemctl start mysql.service
       - run: mysql -uroot -proot  < dev/mysql_dump.sql
+      - run: bin/console dev:db:init
       - run: bin/phpunit -d memory_limit=512M --coverage-clover=build/coverage.xml
       - uses: codecov/codecov-action@v2
         with:
